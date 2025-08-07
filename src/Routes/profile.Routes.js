@@ -1,24 +1,24 @@
 import express from "express";
 import {
-    // sendOtp,
-    // verifyOtp,
-    registerProfile,
-    login,
-    getUser,
-    updateProfile
+  registerProfile,
+  login,
+  getUser,
+  updateProfile
 } from "../Controller/profile.Controller.js";
 import { protect } from "../Middleware/authMiddleware.js";
-// import upload from "../Middleware/multer.js";
 
 const router = express.Router();
 
-// router.post("/send-otp", sendOtp);
-// router.post("/verify-otp", verifyOtp);
-// router.post("/register", upload.single("photo"), registerProfile);
-router.post("/register",registerProfile);
+// Registration route
+router.post("/register", registerProfile);
+
+// Login route
 router.post("/login", login);
+
+// Get user profile (protected)
 router.get("/getUser", protect, getUser);
-// router.put("/update",  upload.single("photo"), protect, updateProfile)
-router.put("/update", protect, updateProfile)
+
+// Update user profile (protected)
+router.put("/update", protect, updateProfile);
 
 export default router;
