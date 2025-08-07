@@ -1,34 +1,43 @@
+// src/Routes/admin.Routes.js
+
 import express from 'express';
-import { 
-    // appAdminSignUp,
-    appAdminSignIn,
-    getappAdminProfile,
-    updateappAdminProfile,
-    appAdminchangePassword,
-    getAllUsers,
-    getUserById,
-    // getAttendanceByDate,
-    // getAttendanceByDateRange,
-    getAttendanceByUserId,
-    // getUsersAttendanceByCity,
-    // getUsersAttendanceByState,
-    getFilteredAttendance
+import {
+  appAdminSignIn,
+  getappAdminProfile,
+  updateappAdminProfile,
+  appAdminchangePassword,
+  getAllUsers,
+  getUserById,
+  getAttendanceByUserId,
+  getFilteredAttendance
 } from '../Controller/admin.Controller.js';
+
 import { AppAdminprotect } from '../Middleware/authMiddleware.js';
 
 const router = express.Router();
 
-// router.post('/register', appAdminSignUp);
+// POST /api/admin/login
 router.post('/login', appAdminSignIn);
+
+// GET /api/admin/getadminprofile
 router.get('/getadminprofile', AppAdminprotect, getappAdminProfile);
+
+// PUT /api/admin/updateprofile
 router.put('/updateprofile', AppAdminprotect, updateappAdminProfile);
+
+// PUT /api/admin/changepassword
 router.put('/changepassword', AppAdminprotect, appAdminchangePassword);
+
+// GET /api/admin/getallusers
 router.get('/getallusers', AppAdminprotect, getAllUsers);
+
+// GET /api/admin/getuser/:id
 router.get('/getuser/:id', AppAdminprotect, getUserById);
-router.post("/filter", AppAdminprotect, getFilteredAttendance); 
-// router.post("/byrange", AppAdminprotect, getAttendanceByDateRange);
-router.get("/byuserid/:id", AppAdminprotect, getAttendanceByUserId);
-// router.get("/byCity/:city", AppAdminprotect, getUsersAttendanceByCity);
-// router.get("/byState/:state", AppAdminprotect, getUsersAttendanceByState);
+
+// POST /api/admin/filter
+router.post('/filter', AppAdminprotect, getFilteredAttendance);
+
+// GET /api/admin/byuserid/:id
+router.get('/byuserid/:id', AppAdminprotect, getAttendanceByUserId);
 
 export default router;
