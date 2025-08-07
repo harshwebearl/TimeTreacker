@@ -39,37 +39,37 @@ app.get("/", (req, res) => {
     message: "Welcome to the Time Tracker API!",
     apis: [
       {
-        base: `${baseUrl}/api/profile`,
+        group: "profile",
         endpoints: [
-          { method: "POST", path: "/register" },
-          { method: "POST", path: "/login" },
-          { method: "GET", path: "/getUser" },
-          { method: "PUT", path: "/update" }
+          { method: "POST", url: `${baseUrl}/api/profile/register` },
+          { method: "POST", url: `${baseUrl}/api/profile/login` },
+          { method: "GET", url: `${baseUrl}/api/profile/getUser` },
+          { method: "PUT", url: `${baseUrl}/api/profile/update` }
         ]
       },
       {
-        base: `${baseUrl}/api/admin`,
+        group: "admin",
         endpoints: [
-          { method: "POST", path: "/login" },
-          { method: "GET", path: "/getadminprofile" },
-          { method: "PUT", path: "/updateprofile" },
-          { method: "PUT", path: "/changepassword" },
-          { method: "GET", path: "/getallusers" },
-          { method: "GET", path: "/getuser/:id" },
-          { method: "POST", path: "/filter" },
-          { method: "GET", path: "/byuserid/:id" }
+          { method: "POST", url: `${baseUrl}/api/admin/login` },
+          { method: "GET", url: `${baseUrl}/api/admin/getadminprofile` },
+          { method: "PUT", url: `${baseUrl}/api/admin/updateprofile` },
+          { method: "PUT", url: `${baseUrl}/api/admin/changepassword` },
+          { method: "GET", url: `${baseUrl}/api/admin/getallusers` },
+          { method: "GET", url: `${baseUrl}/api/admin/getuser/:id` },
+          { method: "POST", url: `${baseUrl}/api/admin/filter` },
+          { method: "GET", url: `${baseUrl}/api/admin/byuserid/:id` }
         ]
       },
       {
-        base: `${baseUrl}/api/attendance`,
+        group: "attendance",
         endpoints: [
-          { method: "POST", path: "/create" },
-          { method: "GET", path: "/getAllAttendance" },
-          { method: "GET", path: "/getAttendanceById/:id" },
-          { method: "PUT", path: "/updateAttendance/:id" },
-          { method: "DELETE", path: "/deleteAttendance/:id" },
-          { method: "POST", path: "/getByDate" },
-          { method: "POST", path: "/dateRange" }
+          { method: "POST", url: `${baseUrl}/api/attendance/create` },
+          { method: "GET", url: `${baseUrl}/api/attendance/getAllAttendance` },
+          { method: "GET", url: `${baseUrl}/api/attendance/getAttendanceById/:id` },
+          { method: "PUT", url: `${baseUrl}/api/attendance/updateAttendance/:id` },
+          { method: "DELETE", url: `${baseUrl}/api/attendance/deleteAttendance/:id` },
+          { method: "POST", url: `${baseUrl}/api/attendance/getByDate` },
+          { method: "POST", url: `${baseUrl}/api/attendance/dateRange` }
         ]
       }
     ]
