@@ -32,6 +32,50 @@ app.use("/api/profile", ProfileRoutes);
 app.use("/api/admin", AdminRoutes);
 app.use("/api/attendance", AttendanceRoutes);
 
+// Welcome route with API listing
+app.get("/", (req, res) => {
+  const baseUrl = req.protocol + '://' + req.get('host');
+  res.json({
+    message: "Welcome to the Time Tracker API!",
+    apis: [
+      {
+        base: `${baseUrl}/api/profile`,
+        endpoints: [
+          { method: "POST", path: "/register" },
+          { method: "POST", path: "/login" },
+          { method: "GET", path: "/getUser" },
+          { method: "PUT", path: "/update" }
+        ]
+      },
+      {
+        base: `${baseUrl}/api/admin`,
+        endpoints: [
+          { method: "POST", path: "/login" },
+          { method: "GET", path: "/getadminprofile" },
+          { method: "PUT", path: "/updateprofile" },
+          { method: "PUT", path: "/changepassword" },
+          { method: "GET", path: "/getallusers" },
+          { method: "GET", path: "/getuser/:id" },
+          { method: "POST", path: "/filter" },
+          { method: "GET", path: "/byuserid/:id" }
+        ]
+      },
+      {
+        base: `${baseUrl}/api/attendance`,
+        endpoints: [
+          { method: "POST", path: "/create" },
+          { method: "GET", path: "/getAllAttendance" },
+          { method: "GET", path: "/getAttendanceById/:id" },
+          { method: "PUT", path: "/updateAttendance/:id" },
+          { method: "DELETE", path: "/deleteAttendance/:id" },
+          { method: "POST", path: "/getByDate" },
+          { method: "POST", path: "/dateRange" }
+        ]
+      }
+    ]
+  });
+});
+
 // 404 fallback for unmatched routes
 app.use((req, res) => {
   res.status(404).json({ message: `🔍 Route not found: ${req.originalUrl}` });
