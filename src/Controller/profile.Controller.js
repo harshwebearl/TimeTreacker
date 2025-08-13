@@ -1,6 +1,6 @@
 import User from "../Model/profileModel.js";
 import jwt from "jsonwebtoken";
-const BASE_URL = "https://timetracker-r8o2.onrender.com/uploads";
+const BASE_URL = "https://timetreacker.onrender.com//uploads";
 // const BASE_URL = "http://localhost:5000/uploads"
 
 const JWT_SECRET = process.env.JWT_SECRET;
